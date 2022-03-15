@@ -8,8 +8,8 @@ const Profile = () => {
   };
   return (
       <Box width={"100%"} maxWidth={"container.md"}>
-        <Heading>{person.name}</Heading>
-        <Text mt={'2rem'}>post: {person.posts.length}</Text>
+        <Heading mt={'1rem'}>{person.name}</Heading>
+        <Text mt={'1rem'}>post: {person.posts.length}</Text>
         <Posts/>
       </Box>
   );

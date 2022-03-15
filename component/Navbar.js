@@ -4,37 +4,51 @@ import {
   Spacer,
   Flex,
   useColorMode,
-  Button,
-  IconButton
+  IconButton,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import { MoonIcon } from "@chakra-ui/icons";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 
 const Navbar = ({}) => {
   const { toggleColorMode } = useColorMode();
+  const icon = useColorModeValue(<SunIcon/>, <MoonIcon/>)
+  const iconHover = useColorModeValue("gray", "white")
   return (
     <Container
-      mt={1}
+      mt={0}
       position={"fixed"}
       zIndex={1}
       top={0}
       left={0}
       right={0}
-      borderRadius={"lg"}
+      // borderRadius={"lg"}
       width={"100%"}
       maxWidth={"container.md"}
-      bg={'teal'}
-      opacity={'90%'}
-      style={{"backdropFilter": "blur(10px"}}
+      bg={"teal"}
+      opacity={"90%"}
+      style={{ backdropFilter: "blur(10px" }}
       p={3}
+      color={"gray.200"}
     >
       <Flex fontSize={"lg"} mx={2} alignItems={"center"} my={"auto"}>
         <Link href="/">Blog.Net</Link>
         <Spacer />
-        <Stack direction={["column", "row"]} spacing={8} alignItems={'center'} my={'auto'}>
+        <Stack
+          direction={"row"}
+          spacing={8}
+          alignItems={"center"}
+          my={"auto"}
+        >
           <Link href="/Posting">Add</Link>
           <Link href={"/Profile"}>Profile</Link>
-          <IconButton onClick={toggleColorMode} icon={<MoonIcon/>} size={'md'}/>
+          <IconButton
+            onClick={toggleColorMode}
+            icon={icon}
+            size={"md"}
+            bg={"teal"}
+            _hover={{"color": iconHover}}
+          />
         </Stack>
       </Flex>
     </Container>

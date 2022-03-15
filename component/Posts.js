@@ -35,6 +35,8 @@ const Posts = () => {
       {posts.map((post) => (
         <Post
           id={post.id}
+          title={post.title}
+          author={post.author}
           content={post.content}
           time={post.time}
           likes={post.likes}
