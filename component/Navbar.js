@@ -6,14 +6,15 @@ import {
   useColorMode,
   IconButton,
   useColorModeValue,
+  Box,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 
-const Navbar = ({}) => {
+const Navbar = ({ login }) => {
   const { toggleColorMode } = useColorMode();
-  const icon = useColorModeValue(<SunIcon/>, <MoonIcon/>)
-  const iconHover = useColorModeValue("gray", "white")
+  const icon = useColorModeValue(<SunIcon />, <MoonIcon />);
+  const iconHover = useColorModeValue("gray", "white");
   return (
     <Container
       mt={0}
@@ -34,20 +35,16 @@ const Navbar = ({}) => {
       <Flex fontSize={"lg"} mx={2} alignItems={"center"} my={"auto"}>
         <Link href="/">Blog.Net</Link>
         <Spacer />
-        <Stack
-          direction={"row"}
-          spacing={8}
-          alignItems={"center"}
-          my={"auto"}
-        >
-          <Link href="/Posting">Add</Link>
-          <Link href={"/Profile"}>Profile</Link>
+        <Stack direction={"row"} spacing={8} alignItems={"center"} my={"auto"}>
+          {login ? <Box>Logout</Box> : <Link href={"/Login"}>Login</Link>}
+          {login ? <Link href="/Posting">Add</Link> : ""}
+          {login ? <Link href={"/Profile"}>Profile</Link> : ""}
           <IconButton
             onClick={toggleColorMode}
             icon={icon}
             size={"md"}
             bg={"teal"}
-            _hover={{"color": iconHover}}
+            _hover={{ color: iconHover }}
           />
         </Stack>
       </Flex>
