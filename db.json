@@ -1,3 +1,11 @@
 {
-  "posts": []
+  "posts": [],
+  "users": [
+    {
+      "id": 2701,
+      "userID": "iam_harveyt",
+      "password": "hank1208",
+      "email": "haotingtong30@gmail.com"
+    }
+  ]
 }

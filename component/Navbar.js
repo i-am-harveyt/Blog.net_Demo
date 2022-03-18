@@ -13,8 +13,10 @@ import Link from "next/link";
 
 const Navbar = ({ login }) => {
   const { toggleColorMode } = useColorMode();
+  const bgColor = useColorModeValue("teal.200", "teal");
   const icon = useColorModeValue(<SunIcon />, <MoonIcon />);
-  const iconHover = useColorModeValue("gray", "white");
+  const iconBGHover = useColorModeValue("gray.500", "gray.200");
+  const iconHover = useColorModeValue(<MoonIcon />, <SunIcon />);
   return (
     <Container
       mt={0}
@@ -26,11 +28,10 @@ const Navbar = ({ login }) => {
       // borderRadius={"lg"}
       width={"100%"}
       maxWidth={"container.md"}
-      bg={"teal"}
+      bg={bgColor}
       opacity={"90%"}
       style={{ backdropFilter: "blur(10px" }}
       p={3}
-      color={"gray.200"}
     >
       <Flex fontSize={"lg"} mx={2} alignItems={"center"} my={"auto"}>
         <Link href="/">Blog.Net</Link>
@@ -43,8 +44,8 @@ const Navbar = ({ login }) => {
             onClick={toggleColorMode}
             icon={icon}
             size={"md"}
-            bg={"teal"}
-            _hover={{ color: iconHover }}
+            bg={bgColor}
+            _hover={{ bg: iconBGHover }}
           />
         </Stack>
       </Flex>

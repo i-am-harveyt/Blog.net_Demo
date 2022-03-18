@@ -6,6 +6,7 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -21,6 +22,8 @@ function Login() {
   };
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+
+  const buttonColor = useColorModeValue("teal.300", "teal")
 
   return (
     <Box>
@@ -40,8 +43,8 @@ function Login() {
           onChange={handlePasswordChange}
           type={show ? "text" : "password"}
         />
-        <InputRightElement width={"3rem"}>
-          <Button h={"2rem"} size={"md"} onClick={handleClick}>
+        <InputRightElement>
+          <Button mr={'1rem'} h={"2rem"} size={"md"} onClick={handleClick}>
             {show ? <ViewOffIcon /> : <ViewIcon />}
           </Button>
         </InputRightElement>
@@ -49,7 +52,7 @@ function Login() {
       <Box mt={"1rem"} float={'right'}>
         <Link href={"/SignUp"}>Sign Up</Link>
       </Box>
-      <Button mt={"2rem"}>Log In!</Button>
+      <Button bg={buttonColor} mt={"2rem"}>Log In!</Button>
     </Box>
   );
 }
