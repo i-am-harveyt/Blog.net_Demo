@@ -23,7 +23,15 @@ function Login() {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
-  const buttonColor = useColorModeValue("teal.300", "teal")
+  const buttonColor = useColorModeValue("teal.300", "teal");
+
+  const fetchData = async () => {
+    const res = await fetch("http://localhost:5000/users", { method: "GET" });
+    let data = await res.json();
+    return data;
+  };
+
+  let clickLogin = () => {};
 
   return (
     <Box>
@@ -44,15 +52,17 @@ function Login() {
           type={show ? "text" : "password"}
         />
         <InputRightElement>
-          <Button mr={'1rem'} h={"2rem"} size={"md"} onClick={handleClick}>
+          <Button mr={"1rem"} h={"2rem"} size={"md"} onClick={handleClick}>
             {show ? <ViewOffIcon /> : <ViewIcon />}
           </Button>
         </InputRightElement>
       </InputGroup>
-      <Box mt={"1rem"} float={'right'}>
+      <Box mt={"1rem"} float={"right"}>
         <Link href={"/SignUp"}>Sign Up</Link>
       </Box>
-      <Button bg={buttonColor} mt={"2rem"}>Log In!</Button>
+      <Button bg={buttonColor} mt={"2rem"} onClick={clickLogin}>
+        Log In!
+      </Button>
     </Box>
   );
 }
